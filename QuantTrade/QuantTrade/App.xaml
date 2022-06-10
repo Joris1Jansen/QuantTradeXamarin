@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuantTrade.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="BaseBlue">#1E90FF</Color>
+            <Color x:Key="BaseWhite">#FFFFFF</Color>
+            <Color x:Key="BaseGray">#808080</Color>
+            <Color x:Key="BasePink">#ea1f80</Color>
+            <Style x:Key="BaseButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource BaseBlue}"/>
+                <Setter Property="TextColor" Value="{StaticResource BaseWhite}"/>
+            </Style>
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource BaseGray}"/>
+                <Setter Property="TextColor" Value="{StaticResource BaseWhite}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

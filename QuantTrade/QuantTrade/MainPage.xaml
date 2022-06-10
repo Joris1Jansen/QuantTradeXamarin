@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel"
+             xmlns:converters="clr-namespace:QuantTrade.Utils.Converter;assembly=QuantTrade"
+             xmlns:autoTestId="clr-namespace:QuantTrade.Utils.AutomationIdProps;assembly=QuantTrade"
+             x:Class="QuantTrade.MainPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:MainVM x:Key="vm"/>
+            <converters:IsNullConverterUtil x:Key="IsNullConverterUtil" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="Center" BindingContext="{StaticResource vm}">
+            <Image x:Name="QTLogo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 50" HeightRequest="150"/>
+            <Label Text="Login"
+                   AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_LoginLabel }"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+        
+            <Entry Placeholder="Email"
+                   AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_EmailEntry }"
+                   Keyboard="Email" TextColor="{StaticResource BaseBlue}"
+                   Text="{Binding Email}"/>
+            <Label Text="{Binding EmailError}"
+                   AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_EmailLabel }"
+                   TextColor="Red"
+                   IsVisible="{Binding EmailError, Converter={StaticResource IsNullConverterUtil}}"/>
+        
+            <Entry Placeholder="Password"
+                   AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_PasswordEntry }"
+                   IsPassword="True"
+                   TextColor="{StaticResource BaseBlue}"
+                   Text="{Binding Password}"/>
+            <Label Text="{Binding PasswordError}"
+                   AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_PasswordLabel }"
+                   TextColor="Red"
+                   IsVisible="{Binding PasswordError, Converter={StaticResource IsNullConverterUtil}}"/>
+        
+            <Button Style="{StaticResource BaseButton}"
+                    AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_LoginButton }"
+                    Margin="0, 50, 0, 0"
+                    Text="Login"
+                    CommandParameter="{Binding FormIsValid}"
+                    Command="{Binding LoginCommand}"/>
+            <Label Margin="0, 8, 0, 0" >No account?</Label>
+            <Button Style="{StaticResource SecondaryButton}"
+                    AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_RegisterButton }"
+                    Text="Register"
+                    Command="{Binding RegisterUserCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

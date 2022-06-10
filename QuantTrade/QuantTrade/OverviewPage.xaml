@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel"
+             xmlns:converters="clr-namespace:QuantTrade.Utils.Converter;assembly=QuantTrade"
+             xmlns:local="clr-namespace:QuantTrade;assembly=QuantTrade"
+             x:Class="QuantTrade.OverviewPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:OverviewVM x:Key="vm"/>
+            <converters:ImageConvertUtil x:Key="ImageConvertUtil" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="0,0,0,0"
+                     BindingContext="{StaticResource vm}">
+
+            <ListView ItemsSource="{Binding CBAccounts}" HasUnevenRows="True" SelectedItem="{Binding SelectedAccount}" SeparatorVisibility="None" HorizontalOptions="FillAndExpand" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="20,30" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" IsEnabled="True">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <Image Grid.Row="0" HorizontalOptions="Start" Source="{Binding Broker, Converter={StaticResource ImageConvertUtil}}" Aspect="AspectFit" HeightRequest="35"/>
+                                <Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Description}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource BasePink}"></Label>
+
+                                <Label Grid.Row="1" Text="{Binding Username, StringFormat='User: {0}'}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Grid.Row="2" Text="{Binding CurrentValue, StringFormat='Size: ${0:F2}'}" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Grid.Row="3" Text="{Binding AmountOfHoldings, StringFormat='Holdings: {0}'}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Grid.Row="4" Text="{Binding UpdatedAt, StringFormat='Updated at: {0}'}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Grid.Row="5" Text="{Binding CreatedAt, StringFormat='Created at: {0}'}" HorizontalOptions="CenterAndExpand"></Label>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

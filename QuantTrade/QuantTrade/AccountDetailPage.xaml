@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuantTrade.AccountDetailPage"
+             xmlns:converters="clr-namespace:QuantTrade.Utils.Converter;assembly=QuantTrade"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:AccountDetailVM x:Key="vm"/>
+            <converters:ImageConvertUtil x:Key="ImageConvertUtil" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="20, 20, 20, 0" BindingContext="{StaticResource vm}">
+        <Frame Margin="20,30" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" IsEnabled="True">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" HorizontalOptions="Start" Source="{Binding Account.Broker, Converter={StaticResource ImageConvertUtil}}" Aspect="AspectFit" HeightRequest="35"/>
+                <Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Account.Description}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource BasePink}"></Label>
+
+                <Label Grid.Row="1" Text="{Binding Account.Username, StringFormat='User: {0}'}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                <Label Grid.Row="2" Text="{Binding Account.CurrentValue, StringFormat='Size: ${0:F2}'}" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"></Label>
+            </Grid>
+        </Frame>
+        <ListView BindingContext="{StaticResource vm}"
+                  ItemsSource="{Binding Account.Holdings}"
+                  SelectedItem="{Binding SelectedPost}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Currency, StringFormat='{0}/USD'}"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                   Text="{Binding CurrentPrice, StringFormat='${0:F2}'}"
+                                   TextColor="{StaticResource BaseBlue}"/>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding Worth, StringFormat='${0:F2}'}" 
+                                   TextColor="{StaticResource BasePink}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate> 
+        </ListView> 
+    </StackLayout>
+</ContentPage>

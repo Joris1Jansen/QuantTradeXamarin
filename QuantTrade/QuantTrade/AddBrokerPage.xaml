@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel"
+             xmlns:converters="clr-namespace:QuantTrade.Utils.Converter;assembly=QuantTrade"
+             xmlns:customView="clr-namespace:QuantTrade.CustomView"
+             x:Class="QuantTrade.AddBrokerPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:AddBrokerVM x:Key="vm"/>
+            <converters:IsNullConverterUtil x:Key="ConverterUtil" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="15,15,15,0"
+                     BindingContext="{StaticResource vm}">
+            
+            <Picker Title="Select a Broker"
+                    TitleColor="Blue"
+                    ItemsSource="{Binding Brokers}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedBroker}"/>
+            
+            <customView:AddCoinbaseForm IsVisible="{Binding IsCoinbase}"></customView:AddCoinbaseForm>
+            
+            <customView:AddBinanceForm IsVisible="{Binding IsBinance}"></customView:AddBinanceForm>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

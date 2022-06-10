@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "603095932734",
+    "project_id": "quanttrade-d7eed",
+    "storage_bucket": "quanttrade-d7eed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603095932734:android:1dcfcc2db15836b068966f",
+        "android_client_info": {
+          "package_name": "com.companyname.QuantTrade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603095932734-dif4h3qjoggj7dr89qk2q9hb4t574htj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVqa0yp2CddvUv4pBqgWTeKdWyiAAoT0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603095932734-dif4h3qjoggj7dr89qk2q9hb4t574htj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

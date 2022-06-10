@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:AddCoinbaseForm="clr-namespace:QuantTrade.CustomView"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel"
+             x:Class="QuantTrade.CustomView.AddCoinbaseForm">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:AddCoinbaseVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentView.Content>
+        <StackLayout Margin="20" BindingContext="{StaticResource vm}">
+            <Entry Text="{Binding Description}"
+                   Placeholder="Broker description"/>
+            
+            <Entry  Placeholder="Public Key"
+                    Keyboard="Email" TextColor="{StaticResource BaseBlue}"
+                    Text="{Binding PublicKey}"/>
+           
+            <Entry  Placeholder="Private Key"
+                    TextColor="{StaticResource BaseBlue}"
+                    Text="{Binding PrivateKey}"/>
+            
+            <Button Style="{StaticResource BaseButton}"
+                    Margin="0, 50, 0, 0"
+                    Text="Add Broker"
+                    CommandParameter="{Binding FormIsValid}"
+                    Command="{Binding AddBrokerCommand}"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

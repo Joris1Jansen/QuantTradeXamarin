@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Coinbase" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="RestSharp" Version="107.3.1-alpha.0.24" />
+        <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+        <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Images\QuantTrade.png" />
+      <EmbeddedResource Include="Assets\Images\QuantTrade.png" />
+      <None Remove="Assets\Images\Coinbase.png" />
+      <EmbeddedResource Include="Assets\Images\Coinbase.png" />
+      <None Remove="Assets\Images\Binance.png" />
+      <EmbeddedResource Include="Assets\Images\Binance.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Components\AddCoinbaseForm.xaml.cs">
+        <DependentUpon>AddCoinbaseForm.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Helpers\Interface" />
+    </ItemGroup>
+</Project>

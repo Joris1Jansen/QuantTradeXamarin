@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{C642F879-067D-4ED3-AF4B-166411062FEE}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <RootNamespace>QuantTrade.UITest</RootNamespace>
+        <AssemblyName>QuantTrade.UITest</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="NUnit" Version="3.13.3" />
+        <PackageReference Include="Xamarin.UITest" Version="3.2.8" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AppInitializer.cs" />
+        <Compile Include="BackdoorService.cs" />
+        <Compile Include="Pages\BasePage.cs" />
+        <Compile Include="Pages\MainPage.cs" />
+        <Compile Include="Pages\OverviewPage.cs" />
+        <Compile Include="Pages\RegisterPage.cs" />
+        <Compile Include="Tests\BaseTest.cs" />
+        <Compile Include="Tests\MainTests.cs" />
+        <Compile Include="Tests\RegisterTest.cs" />
+        <Compile Include="Util\PageTitleConstants.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\QuantTrade\QuantTrade\QuantTrade.csproj">
+        <Project>{30188346-9df2-4ed8-a1c1-4cd6717c8068}</Project>
+        <Name>QuantTrade</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
