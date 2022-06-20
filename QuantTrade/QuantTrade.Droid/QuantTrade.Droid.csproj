@@ -54,7 +54,7 @@
         <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.5.0.2" />
         <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
         <PackageReference Include="Xamarin.Firebase.Auth" Version="121.0.1.1" />
-        <PackageReference Include="Xamarin.Firebase.Firestore" Version="123.0.1.1" />
+        <PackageReference Include="Xamarin.Firebase.Firestore" Version="123.0.3.1" />
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     </ItemGroup>
     <ItemGroup>
@@ -74,22 +74,30 @@
     </ItemGroup>
     <ItemGroup>
         <AndroidResource Include="Resources\drawable-hdpi\add.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\edit.png" />
         <AndroidResource Include="Resources\drawable-hdpi\home.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\wallet.png" />
         <AndroidResource Include="Resources\drawable-hdpi\map.png" />
         <AndroidResource Include="Resources\drawable-hdpi\person.png" />
         <AndroidResource Include="Resources\drawable-hdpi\save.png" />
         <AndroidResource Include="Resources\drawable-xhdpi\add.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\edit.png" />
         <AndroidResource Include="Resources\drawable-xhdpi\home.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\wallet.png" />
         <AndroidResource Include="Resources\drawable-xhdpi\map.png" />
         <AndroidResource Include="Resources\drawable-xhdpi\person.png" />
         <AndroidResource Include="Resources\drawable-xhdpi\save.png" />
         <AndroidResource Include="Resources\drawable-xxhdpi\add.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\edit.png" />
         <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\wallet.png" />
         <AndroidResource Include="Resources\drawable-xxhdpi\map.png" />
         <AndroidResource Include="Resources\drawable-xxhdpi\person.png" />
         <AndroidResource Include="Resources\drawable-xxhdpi\save.png" />
         <AndroidResource Include="Resources\drawable\add.png" />
+        <AndroidResource Include="Resources\drawable\edit.png" />
         <AndroidResource Include="Resources\drawable\home.png" />
+        <AndroidResource Include="Resources\drawable\wallet.png" />
         <AndroidResource Include="Resources\drawable\map.png" />
         <AndroidResource Include="Resources\drawable\person.png" />
         <AndroidResource Include="Resources\drawable\save.png" />

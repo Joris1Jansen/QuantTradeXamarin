@@ -54,9 +54,8 @@ namespace QuantTrade
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    // coordinates = coorArray;
-                    // account.UpdateHoldings();
-                    // vm.SetAccount(account);
+                    vm.UpdateAccount();
+                    coordinates = coorArray;
                 });
             }
         }

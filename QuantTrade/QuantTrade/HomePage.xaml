@@ -17,7 +17,7 @@
     <TabbedPage.ToolbarItems>
         <ToolbarItem Text="Add" IconImageSource="add.png" AutomationId="{x:Static autoTestId:AutomationIdProps.HomePage_AddBrokerButton }" Command="{Binding Source={StaticResource vm}, Path=NewBrokerCommand}"/>
     </TabbedPage.ToolbarItems>
-    <local:OverviewPage Title="Overview" IconImageSource="home.png"/>
-    <!-- <local:MapPage Title="Map" IconImageSource="map.png"/> -->
-    <!-- <local:ProfilePage Title="Profile" IconImageSource="person.png"/> -->
+    <local:CryptosPage Title="Top 10" IconImageSource="home.png"/>
+    <local:OverviewPage Title="Overview" IconImageSource="wallet.png"/>
+    <local:ProfilePage Title="Profile" IconImageSource="person.png"/>
 </TabbedPage>

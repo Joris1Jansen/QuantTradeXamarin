@@ -11,6 +11,7 @@
 
     <ItemGroup>
         <PackageReference Include="Coinbase" Version="6.0.1" />
+        <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -28,6 +29,30 @@
       <EmbeddedResource Include="Assets\Images\Coinbase.png" />
       <None Remove="Assets\Images\Binance.png" />
       <EmbeddedResource Include="Assets\Images\Binance.png" />
+      <None Remove="Assets\Images\NoImage.jpg" />
+      <EmbeddedResource Include="Assets\Images\NoImage.jpg" />
+      <None Remove="Assets\Images\Coins\BTC.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\BTC.png" />
+      <None Remove="Assets\Images\Coins\ETH.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\ETH.png" />
+      <None Remove="Assets\Images\Coins\ADA.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\ADA.png" />
+      <None Remove="Assets\Images\Coins\BNB.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\BNB.png" />
+      <None Remove="Assets\Images\Coins\DAI.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\DAI.png" />
+      <None Remove="Assets\Images\Coins\DOGE.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\DOGE.png" />
+      <None Remove="Assets\Images\Coins\DOT.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\DOT.png" />
+      <None Remove="Assets\Images\Coins\SOL.jpeg" />
+      <None Remove="Assets\Images\Coins\TRX.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\TRX.png" />
+      <None Remove="Assets\Images\Coins\XRP.jpeg" />
+      <None Remove="Assets\Images\Coins\SOL.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\SOL.png" />
+      <None Remove="Assets\Images\Coins\XRP.png" />
+      <EmbeddedResource Include="Assets\Images\Coins\XRP.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -35,9 +60,5 @@
         <DependentUpon>AddCoinbaseForm.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Helpers\Interface" />
     </ItemGroup>
 </Project>

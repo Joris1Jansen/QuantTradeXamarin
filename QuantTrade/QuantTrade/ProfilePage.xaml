@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuantTrade.ProfilePage"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:ProfileVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Margin="20,30" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" IsEnabled="True">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" Padding="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <Image Grid.Row="0" x:Name="QTLogo" Aspect="AspectFit" HorizontalOptions="Center" Margin="0, 0, 0, 50" HeightRequest="250"/>
+                    <Label Grid.Row="1" Text="{Binding Email, StringFormat='User: {0}'}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                    <Button Grid.Row="2" Text="Take Image" Clicked="TakeImage_ButtonClicked" Style="{StaticResource BaseButton}"/>
+                    <Button Grid.Row="3" Text="Pick Image" Clicked="PickImage_ButtonClicked" Style="{StaticResource BaseButton}"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

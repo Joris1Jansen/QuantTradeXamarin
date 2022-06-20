@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:QuantTrade.Utils.Converter;assembly=QuantTrade"
+             x:Class="QuantTrade.CryptosPage"
+             xmlns:vm="clr-namespace:QuantTrade.ViewModel">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:CryptosVM x:Key="vm"/>
+            <converters:CoinImageConvertUtil x:Key="CoinImageConvertUtil" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="0,0,0,0"
+                     BindingContext="{StaticResource vm}">
+
+            <ListView ItemsSource="{Binding TopTen}" HasUnevenRows="True" SeparatorVisibility="None" HorizontalOptions="FillAndExpand" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="20,30" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" IsEnabled="True">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <Image Grid.Row="0" HorizontalOptions="Start" Source="{Binding Currency, Converter={StaticResource CoinImageConvertUtil}}" Aspect="AspectFit" HeightRequest="35"/>
+                                <Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Currency}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource BasePink}"></Label>
+
+                                <Label Grid.Row="1" Text="{Binding CurrentPrice, StringFormat='Current price: ${0:F2}'}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

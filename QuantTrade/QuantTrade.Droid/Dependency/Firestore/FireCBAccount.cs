@@ -40,7 +40,7 @@ namespace QuantTrade.Droid.Dependency.Firestore
                     holdingDoc.Put("walletId", holding.WalletId);
                     holdings.Add(holdingDoc);
                 }
-                
+
                 var cbDoc = new Dictionary<string, Object>
                 {
                     { "userId", Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid },

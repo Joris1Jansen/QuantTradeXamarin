@@ -19,6 +19,7 @@ namespace QuantTrade
             InitializeComponent();
 
             vm = Resources["vm"] as OverviewVM;
+            BindingContext = vm;
         }
 
         protected override void OnAppearing()
@@ -35,6 +36,7 @@ namespace QuantTrade
         {
             Accelerometer.ReadingChanged -= UpdateAccount;
             Accelerometer.Stop();
+            
         }
         
         public void UpdateAccount(object sender, AccelerometerChangedEventArgs args)

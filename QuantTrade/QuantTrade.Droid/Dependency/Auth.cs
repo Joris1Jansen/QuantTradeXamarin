@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Firebase.Auth;
 using QuantTrade.Helpers;
+using QuantTrade.Model.Interface;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(QuantTrade.Droid.Dependency.Auth))]
@@ -70,6 +71,11 @@ namespace QuantTrade.Droid.Dependency
         public string GetCurrentUserId()
         {
             return FirebaseAuth.Instance.CurrentUser.Uid;
+        }
+
+        public UserInfo GetCurrentUserInfo()
+        {
+            return new UserInfo();
         }
     }
 }

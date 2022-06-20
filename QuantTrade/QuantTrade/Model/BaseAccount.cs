@@ -1,13 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
+using Coinbase;
+using QuantTrade.Firestore;
 using QuantTrade.Model.Interface;
 using SQLite;
 
 namespace QuantTrade.Model
 {
-    public class BaseAccount
+    public class BaseAccount : INotifyPropertyChanged
     {
         [PrimaryKey, AutoIncrement]
         public string Id { get; set; }
@@ -15,8 +20,17 @@ namespace QuantTrade.Model
         public BrokersEnum Broker { get; set; }
         
         public string Username { get; set; }
-        
-        public string Description { get; set; }
+
+        private string description;
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                description = value;
+                RaisePropertyChanged("Description");
+            }
+        }
         
         public string UserId { get; set; }
         
@@ -24,11 +38,39 @@ namespace QuantTrade.Model
         
         public string PrivateKey { get; set; }
         
-        public ObservableCollection<BaseHolding> Holdings { get; set; }
+        private ObservableCollection<BaseHolding> _holdings;
+        public ObservableCollection<BaseHolding> Holdings
+        {
+            get { return _holdings; }
+            set
+            {
+                _holdings = value;
+                RaisePropertyChanged();
+            }
+        }
+        
+        // public ObservableCollection<BaseHolding> Holdings { get; set; }
         
         public DateTime UpdatedAt { get; set; }
         
         public DateTime CreatedAt { get; set;  }
+        
+        private CoinbaseClient Client;
+        
+        
+        #region INotifyPropertyChanged implementation
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
         
         public int AmountOfHoldings
         {
@@ -64,9 +106,22 @@ namespace QuantTrade.Model
             Broker = broker;
         }
         
-        public virtual void UpdateHoldings()
+        public async void UpdateHoldings()
         {
-            return;
+            Client = new CoinbaseClient(new ApiKeyConfig{ ApiKey = PublicKey, ApiSecret = PrivateKey});
+            
+            foreach (CBHolding holding in Holdings)
+            {
+                var newCurrentPrice = await Client.Data.GetExchangeRatesAsync(holding.Currency);
+                var newAmount = Client.Accounts.GetAccountAsync(holding.WalletId);
+
+                holding.CurrentPrice = newCurrentPrice.Data.Rates["USD"];
+                holding.Amount = newAmount.Result.Data.Balance.Amount;
+            }
+            
+            UpdatedAt = DateTime.Now;
+            
+            await FireCBAccount.Update(this as CBAccount);
         }
     }
 }

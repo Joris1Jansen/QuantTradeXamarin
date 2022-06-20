@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using QuantTrade.Model.Interface;
 using Xamarin.Forms;
 
 namespace QuantTrade.Helpers
@@ -11,6 +12,7 @@ namespace QuantTrade.Helpers
         Task<bool> LoginUser(string email, string password);
         bool IsAuthenticated();
         string GetCurrentUserId();
+        UserInfo GetCurrentUserInfo();
     }
     public class Auth
     {
@@ -58,6 +60,11 @@ namespace QuantTrade.Helpers
         public static string GetCurrentUserId()
         {
             return auth.GetCurrentUserId();
+        }
+        
+        public static UserInfo GetCurrentUserInfo()
+        {
+            return auth.GetCurrentUserInfo();
         }
         
     }

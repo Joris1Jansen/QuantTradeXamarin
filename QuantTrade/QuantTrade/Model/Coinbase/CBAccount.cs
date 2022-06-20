@@ -1,4 +1,7 @@
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Coinbase;
 using Coinbase.Models;
@@ -8,7 +11,7 @@ using QuantTrade.Model.Interface;
 
 namespace QuantTrade.Model
 {
-    public class CBAccount : BaseAccount, IBaseAccount
+    public class CBAccount : BaseAccount, IBaseAccount, INotifyPropertyChanged
     {
         private CoinbaseClient Client;
         public CBAccount(

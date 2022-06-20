@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using QuantTrade.Model;
+using Xamarin.Forms;
 
 namespace QuantTrade.ViewModel
 {
@@ -18,8 +19,21 @@ namespace QuantTrade.ViewModel
             }
         }
         
+        public Command EditAccountCommand { get; set; }
+
         public AccountDetailVM()
         {
+            EditAccountCommand = new Command<BaseAccount>(EditBroker);
+        }
+        
+        private async void EditBroker(BaseAccount parameter)
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new AccountEditPage(parameter));
+        }
+        
+        private bool CanEditBroker(bool parameter)
+        {
+            return true;
         }
         
 

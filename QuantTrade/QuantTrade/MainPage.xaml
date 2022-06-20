@@ -16,7 +16,7 @@
     
     <ContentPage.Content>
         <StackLayout Margin="20" VerticalOptions="Center" BindingContext="{StaticResource vm}">
-            <Image x:Name="QTLogo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 50" HeightRequest="150"/>
+            <Image x:Name="QTLogo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 50" HeightRequest="50"/>
             <Label Text="Login"
                    AutomationId="{x:Static autoTestId:AutomationIdProps.MainPage_LoginLabel }"
                    HorizontalTextAlignment="Center"

@@ -13,6 +13,14 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit"
+                     BindingContext="{StaticResource vm}"
+                     Command="{Binding EditAccountCommand}"
+                     CommandParameter="{Binding Account}"
+                     IconImageSource="edit.png"/>
+    </ContentPage.ToolbarItems>
+    
     <StackLayout Margin="20, 20, 20, 0" BindingContext="{StaticResource vm}">
         <Frame Margin="20,30" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" IsEnabled="True">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10" Padding="20">
@@ -30,8 +38,7 @@
             </Grid>
         </Frame>
         <ListView BindingContext="{StaticResource vm}"
-                  ItemsSource="{Binding Account.Holdings}"
-                  SelectedItem="{Binding SelectedPost}">
+                  ItemsSource="{Binding Account.Holdings}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

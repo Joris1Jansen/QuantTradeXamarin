@@ -1,16 +1,32 @@
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Coinbase.Models;
 using QuantTrade.Firestore;
 using QuantTrade.Helpers.Messages;
 using QuantTrade.Model;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace QuantTrade.ViewModel
 {
-    public class OverviewVM
+    public class OverviewVM : INotifyPropertyChanged
     {
-        public ObservableCollection<CBAccount> CBAccounts { get; set; }
+        private ObservableCollection<BaseAccount> cBAccounts;
+
+        public ObservableCollection<BaseAccount> CBAccounts
+        {
+            get { return cBAccounts; }
+            set
+            {
+                cBAccounts = value;
+                foreach (var acc in CBAccounts)
+                {
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         private BaseAccount selectedAccount;
 
@@ -29,7 +45,7 @@ namespace QuantTrade.ViewModel
 
         public OverviewVM()
         {
-            CBAccounts = new ObservableCollection<CBAccount>();
+            CBAccounts = new ObservableCollection<BaseAccount>();
             HandleReceiveMessages();
         }
 
@@ -52,6 +68,13 @@ namespace QuantTrade.ViewModel
             {
                 CBAccounts.Add(account);
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
